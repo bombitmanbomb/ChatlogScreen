@@ -1,0 +1,105 @@
+OWNER=" "
+Jarvis = "off"
+chatbox = peripheral.wrap("right")
+screen = peripheral.wrap("left")
+
+screen.setTextScale(1)
+screen.clear()
+screen.setCursorPos(1,1)
+rednet.open("top")
+a = fs.list("/LOGS")
+FILE = #a
+modem = peripheral.wrap("top")
+modem.open(314)
+term.redirect(screen)
+chatbox.say("Bombitmanbomb's Chat System Booting Up")
+sleep(1)
+chatbox.say("JarvisAI v1.0 by bombitmanbomb booting up. Server Connection:online")
+print("BchatPublic V1.0-----------------CHAT----------------------------------")
+while true do
+event, player, message,d,e,f,g = os.pullEvent()
+if event == "chat" then
+if player=="bombitmanbomb" then
+term.setBackgroundColor(32)
+term.setTextColor(16384)
+write("[Script Creator]")
+end
+--JARVIS--
+commands = {
+[1]={keyword="commands"},
+[2]={keyword="help"},
+[3]={keyword="time"},
+[4]={keyword="off"},
+[5]={keyword="info"}
+}
+if player==OWNER then
+  CMD=string.lower(message)
+  if string.find(CMD,"jarvis",1) then
+    for x = 1,#commands do
+      if string.find(CMD,commands[x].keyword,7) then
+      Command=x
+        if Command == 1 then
+          commandlist = "The Commands Are "
+          for c=1,#commands do
+          commandlist = commandlist..commands[c].keyword.."."
+          end
+        
+        chatbox.say("Jarvis: "..commandlist)
+        end--command1
+        if Command == 2 or Command==5 then
+          chatbox.say("Jarvis: This is Jarvis v1.0 by bombitmanbomb. to use say my name then a command")
+          
+        end
+        if Command==3 then
+          chatbox.say("Jarvis: The InGame time is "..textutils.formatTime(os.time()))
+        end
+      end
+    end
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+term.setTextColor(512)
+write(player)
+term.setTextColor(1)
+write(":")
+term.setTextColor(1)
+write(message)
+term.setBackgroundColor(32768)
+print(" ")
+time = os.time()
+day = os.day()
+tA = file.readLines("chat1.log")
+if #tA >=500 then
+FILE=FILE+1
+end
+--chat = fs.open("chat1.log","a")
+--chat.writeLine("<"..day..":"..time..">"..player..":"..message)
+--chat.close()
+end
+if event == "modem_message" then
+tChat = file.readLines("chat1.log")
+print(textutils.serialize(a))
+tResults = file.Search(tChat,e)
+forsend = textutils.serialize(tResults)
+print(forsend)
+modem.transmit(d,314,forsend)
+end
+
+
+
+
+end

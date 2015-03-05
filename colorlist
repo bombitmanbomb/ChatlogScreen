@@ -1,0 +1,7 @@
+a=1
+shell.run("clear")
+while true do
+term.setTextColor(a)
+print(a)
+a=a*2
+end

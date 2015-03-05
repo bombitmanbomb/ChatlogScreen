@@ -1,0 +1,9 @@
+shell.run("copy","disk/start","startup")
+shell.run("copy","disk/file","file")
+shell.run("copy","disk/chat1.log","chat1.log")
+shell.run("copy","disk/logChat","logChat")
+shell.run("copy","disk/readme","readme")
+shell.run("edit","logChat")
+shell.run("copy","disk/editR","edit")
+shell.run("copy","disk/BombOSv1.0","BombOSv1.0")
+

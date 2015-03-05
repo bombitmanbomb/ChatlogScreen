@@ -1,0 +1,2 @@
+os.loadAPI("file")
+shell.run("logChat")

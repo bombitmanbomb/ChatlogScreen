@@ -1,0 +1,46 @@
+function readLines(sPath)
+  local file = fs.open(sPath,"r")
+  
+      local tLines = {}
+      local sLine = file.readLine()
+      while sLine do
+        table.insert(tLines,sLine)
+        sLine = file.readLine()
+      end
+      file.close()
+      return tLines
+  
+end
+function writeLines(tLines, sPath)
+  local file = fs.open(sPath,"a")
+ 
+      for a = 1,#tLines do
+        file.writeLine(tLines[a])
+      end
+      file.close()
+  
+end  
+function Search(tLines,sKey)
+ tRes = {}
+ for a = 1,#tLines do
+   if string.find(tLines[a],sKey) 
+   then
+   sLine = tLines[a]
+   table.insert(tRes,sLine)
+   else
+   
+   end
+ 
+ end
+ return tRes 
+end 
+   
+function serial(key)
+local tChat = {}
+local tdownload = {}
+tChat = readLines("chat1.log")
+tdownload = Search(tChat,key)
+download = textutils.serialize(tdownload)
+return download
+
+end

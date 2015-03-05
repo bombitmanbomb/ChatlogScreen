@@ -1,0 +1,5 @@
+
+tChat = file.readLines("chat1.log")
+File = textutils.serialize(tChat)
+
+
